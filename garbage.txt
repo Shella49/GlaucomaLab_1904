@@ -1,0 +1,1 @@
+       - Для DDLS 4-7 используй "выраженное" или "ум�           additional_description: { type: Type.STRING },

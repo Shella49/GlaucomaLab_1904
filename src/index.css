@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Print Styles */
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the printable report and its children */
+  #printable-report, #printable-report * {
+    visibility: visible;
+  }
+
+  /* Position the report at the top left */
+  #printable-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  /* Hide UI elements that shouldn't be printed */
+  .no-print, button, aside, header, .no-scrollbar, nav {
+    display: none !important;
+  }
+
+  /* Ensure colors are printed */
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+  }
+
+  /* Page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure text colors are black for printing */
+  .text-slate-900, .text-slate-800, .text-slate-700, .text-slate-600, .text-slate-500 {
+    color: black !important;
+  }
+
+  /* Increase font size for print */
+  #printable-report {
+    font-size: 14pt !important;
+  }
+  
+  #printable-report h1 { font-size: 24pt !important; }
+  #printable-report h2 { font-size: 18pt !important; }
+  #printable-report h3 { font-size: 14pt !important; }
+  #printable-report p, #printable-report span { font-size: 12pt !important; }
+  #printable-report .text-[8px], #printable-report .text-[9px], #printable-report .text-[10px] {
+    font-size: 10pt !important;
+  }
+}
+
+/* Markdown Clinical Styles */
+.prose-clinical h1 { @apply text-2xl font-serif font-bold mb-6 mt-2 border-b-2 border-slate-900 pb-2 text-slate-900 uppercase tracking-tight; }
+.prose-clinical h2 { @apply text-xl font-serif font-bold mb-4 mt-8 text-slate-800 border-b border-slate-200 pb-1; }
+.prose-clinical h3 { @apply text-base font-sans font-bold mb-3 mt-6 text-indigo-700; }
+.prose-clinical p { @apply mb-4 leading-relaxed text-slate-800 text-sm; }
+.prose-clinical ul { @apply mb-6 space-y-2 list-disc list-inside; }
+.prose-clinical li { @apply text-slate-800 text-sm ml-2; }
+.prose-clinical strong { @apply text-slate-950 font-bold; }
+.prose-clinical hr { @apply my-8 border-slate-200; }
+.prose-clinical blockquote { @apply pl-4 border-l-4 border-indigo-100 italic text-slate-600 my-4; }
+
+body {
+  @apply bg-slate-50 text-slate-900 font-sans antialiased;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400;
+}
